@@ -39,7 +39,7 @@ public class Main {
             sd = new StudentDao();
 
             byte image[] = Files.readAllBytes(Paths.get("src/main/resources/img.png"));
-            Student s = new Student("ABC", "CSF304", "b@gmail.com", image);
+            Student s = new Student("ABC", "CSF304", "avb@gmail.com", image);
             sd.saveAStudent(s);
 
             System.out.println("OBJCET STORED!!!");
@@ -47,15 +47,15 @@ public class Main {
             System.out.println("Some error!!!!");
         }
 
-//        Student s = sd.findById(1);
-//        byte image[] = s.getImage();
-//
-//        Path path = Paths.get("scr/main/resources/output.jpg");
-//        try {
-//            Files.write(path, image);
-//        } catch (Exception e) {
-//            System.out.println("Some error!!!");
-//        }
+        Student s = sd.findById(1);
+        byte image[] = s.getImage();
+
+        Path path = Paths.get("src/main/resources/output.jpg");
+        try {
+            Files.write(path, image);
+        } catch (Exception e) {
+            System.out.println("Some error!!!");
+        }
     }
 }
 
