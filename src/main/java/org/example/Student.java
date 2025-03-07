@@ -9,6 +9,10 @@ public class Student {
     @GeneratedValue(strategy= GenerationType.AUTO)
     int roll;
 
+    @Embedded
+    Address address;
+
+
 
     @Column(name="StudentName", nullable = false)
     String name;
