@@ -5,8 +5,13 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
 //        Configuration cfg = new Configuration();
 //        cfg.configure();
@@ -29,24 +34,42 @@ public class Main {
 //
 //
 //
-        StudentDao sd =new StudentDao();
+        StudentDao sd = null;
+        try {
+            sd = new StudentDao();
 
-        Student s =new Student("ABC","CSF304", "ab@gmail.com", 11);
-        sd.saveAStudent(s);
+            byte image[] = Files.readAllBytes(Paths.get("src/main/resources/img.png"));
+            Student s = new Student("ABC", "CSF304", "b@gmail.com", image);
+            sd.saveAStudent(s);
 
-        Student s1 =new Student("CDE","CSF305","cd@gmail.com",12);
+            System.out.println("OBJCET STORED!!!");
+        } catch (Exception e) {
+            System.out.println("Some error!!!!");
+        }
 
-
-
-        sd.saveAStudent(s1);
-
-        sd.deleteAStudet(s.getRoll());
-
-        s1.setEmail("s1@gmail.com");
-        sd.UpdateStudent(s1.getRoll(),s1);
-
-        System.out.println(sd.findById(s1.getRoll()));
+//        Student s = sd.findById(1);
+//        byte image[] = s.getImage();
+//
+//        Path path = Paths.get("scr/main/resources/output.jpg");
+//        try {
+//            Files.write(path, image);
+//        } catch (Exception e) {
+//            System.out.println("Some error!!!");
+//        }
     }
-
-
 }
+
+//        Student s1 =new Student("CDE","CSF305","cd@gmail.com",12);
+
+
+//        sd.saveAStudent(s1);
+
+//        sd.deleteAStudet(s.getRoll());
+//
+//        s1.setEmail("s1@gmail.com");
+//        sd.UpdateStudent(s1.getRoll(),s1);
+//
+//        System.out.println(sd.findById(s1.getRoll()));
+//    }
+
+

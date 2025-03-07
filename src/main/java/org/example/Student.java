@@ -37,11 +37,19 @@ public class Student {
     public Student() {
     }
 
-    public Student(String name, String course, String email, int age) {
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    public Student(String name, String course, String email, byte image[]) {
         this.name = name;
         this.course = course;
         this.email = email;
-        this.age = age;
+        this.image = image;
     }
 
     public String getName() {
@@ -78,6 +86,9 @@ public class Student {
 
     @Transient
     int age;
+
+    @Lob
+    byte image[];
 
 
 }

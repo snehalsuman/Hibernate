@@ -59,15 +59,17 @@ public class StudentDao {
         System.out.println("");
         s4.close();
     }
-    public List<Student>getAll()
-    {
-        Session s5 = sessionFactory.openSession();
-        Transaction t5 = s5.beginTransaction();
+    public List<Student> getAll(){
+        Session s1=sf.openSession();
+        Transaction t1=s1.beginTransaction();
+        List<Student> students = s1.createQuery("FROM Student", Student.class).list();
+
+        t1.commit();
+        s1.close();
+
+        return students;
 
     }
-
-
-
 
 
 }
