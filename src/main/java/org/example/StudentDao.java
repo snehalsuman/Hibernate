@@ -5,6 +5,10 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+import java.util.List;
+
+import static org.example.HibernateUtil.sessionFactory;
+
 public class StudentDao {
     SessionFactory sf =HibernateUtil.getSessionFactory();
 
@@ -54,6 +58,12 @@ public class StudentDao {
         t5.commit();
         System.out.println("");
         s4.close();
+    }
+    public List<Student>getAll()
+    {
+        Session s5 = sessionFactory.openSession();
+        Transaction t5 = s5.beginTransaction();
+
     }
 
 
